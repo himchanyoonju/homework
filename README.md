@@ -5,4 +5,6 @@
    * Module 3: Complete <code>edu.hanyang.submit.TinySEBPlusTree.java</code> file.
    * Module 4: Complete <code>edu.hanyang.submit.TinySEQueryProcess.java</code> file.
 2. Run <code>mvn package</code>.
-3. If you pass every unit test successfully, commit & push all changes into your Github TinySE-submit repository before the deadline.
+3. If you pass every unit test successfully, commit & push all changes into your Github TinySE-submit repository before the deadline
+
+tset.
