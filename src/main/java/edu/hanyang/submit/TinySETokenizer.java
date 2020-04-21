@@ -13,17 +13,21 @@ import org.apache.lucene.analysis.TokenStream;
 import org.apache.lucene.analysis.tokenattributes.CharTermAttribute;
 
 public class TinySETokenizer implements Tokenizer {
-	SimpleAnalyzer analyzer;
-	PorterStemmer stemmer;
-	List<String> output = new ArrayList<String>();
-	
+	public SimpleAnalyzer analyzer;
+	public PorterStemmer stemmer;
+	List<String> output = new ArrayList<String>(); 
+
 	public void setup() {
 		analyzer = new SimpleAnalyzer();
 		stemmer = new PorterStemmer();
 	}
 
 	public List<String> split(String text) {
+		
+		output.clear();
+		
 		try {
+			
 			TokenStream stream = analyzer.tokenStream(null, new StringReader(text));
 			stream.reset();
 			CharTermAttribute term = stream.getAttribute(CharTermAttribute.class);
@@ -34,21 +38,18 @@ public class TinySETokenizer implements Tokenizer {
 				stemmer.stem();
 				String input = stemmer.getCurrent();
 				output.add(input);
-				
 			}
 			stream.close();
+		}catch (IOException e) {
 			
-		} catch (IOException e){
 			throw new RuntimeException(e);
+			
 		}
-		
 		return output;
 	}
 
 	public void clean() {
-		
-		output.clear();
-		
+		analyzer.close();
 	}
 
 }
