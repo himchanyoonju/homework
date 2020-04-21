@@ -13,8 +13,8 @@ import org.apache.lucene.analysis.TokenStream;
 import org.apache.lucene.analysis.tokenattributes.CharTermAttribute;
 
 public class TinySETokenizer implements Tokenizer {
-	public SimpleAnalyzer analyzer;
-	public PorterStemmer stemmer;
+	SimpleAnalyzer analyzer;
+	PorterStemmer stemmer;
 	List<String> output = new ArrayList<String>(); 
 
 	public void setup() {
